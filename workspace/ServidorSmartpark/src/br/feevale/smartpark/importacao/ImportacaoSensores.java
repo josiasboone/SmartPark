@@ -1,12 +1,7 @@
 package br.feevale.smartpark.importacao;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
-
-import br.feevale.smartpark.persistencia.Vaga;
-import br.feevale.smartpark.persistencia.dao.Conexao;
-import br.feevale.smartpark.persistencia.dao.Persistencia;
-import br.feevale.smartpark.webservice.WebserviceSensores;
-import br.feevale.smartpark.webservice.wsl.ArrayOfString;
 
 public class ImportacaoSensores {
 	
@@ -16,11 +11,12 @@ public class ImportacaoSensores {
 		MessageDigest md = null;
 		
 		try{
-			
+			md = MessageDigest.getInstance("MD5");
 		} catch(Exception e ){
 			e.printStackTrace();
 		}
-		
+		BigInteger hash = new BigInteger(1, md.digest("123".getBytes()));
+		System.out.println( hash.toString(16).length());
 		
 		
 //		Conexao cnx = Conexao.getConexao( Vaga.class );

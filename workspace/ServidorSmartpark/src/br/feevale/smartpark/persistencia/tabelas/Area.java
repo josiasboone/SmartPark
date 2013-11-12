@@ -1,4 +1,4 @@
-package br.feevale.smartpark.persistencia;
+package br.feevale.smartpark.persistencia.tabelas;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="area")
 public class Area implements Tabela {
 	
 	@Id @GeneratedValue(strategy=AUTO)	
@@ -15,6 +15,10 @@ public class Area implements Tabela {
 	
 	@Column(length=200)
 	private String dsArea;
+	
+	@Column(length=1)
+	private String snDesativado;
+	
 
 	public int getIdArea() {
 		return idArea;
@@ -30,6 +34,14 @@ public class Area implements Tabela {
 
 	public void setDsArea(String dsArea) {
 		this.dsArea = dsArea;
+	}
+
+	public String getSnDesativado() {
+		return snDesativado;
+	}
+
+	public void setSnDesativado(String snDesativado) {
+		this.snDesativado = snDesativado;
 	}
 	
 }

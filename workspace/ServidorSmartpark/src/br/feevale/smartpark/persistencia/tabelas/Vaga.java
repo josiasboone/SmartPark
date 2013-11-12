@@ -1,4 +1,4 @@
-package br.feevale.smartpark.persistencia;
+package br.feevale.smartpark.persistencia.tabelas;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -26,6 +26,8 @@ public class Vaga implements Tabela {
 	@Column(length=1)
 	private String tpVaga;
 	
+	@Column(length=1)
+	private String snDesativado;
 	
 	public int getIdVaga() {
 		return idVaga;
@@ -63,6 +65,11 @@ public class Vaga implements Tabela {
 	public void setTpVaga(String tpVaga) {
 		this.tpVaga = tpVaga;
 	}
-	
+	public String getSnDesativado() {
+		return snDesativado;
+	}
+	public void setSnDesativado(String snDesativado) {
+		this.snDesativado = snDesativado;
+	}
 	
 }
