@@ -13,7 +13,7 @@ public class Area implements Tabela {
 	@Id @GeneratedValue(strategy=AUTO)	
 	private int idArea;
 	
-	@Column(length=200)
+	@Column(length=200,unique=true)
 	private String dsArea;
 	
 	@Column(length=1)

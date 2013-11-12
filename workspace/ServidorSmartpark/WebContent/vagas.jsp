@@ -36,8 +36,8 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="areas.jsp">Áreas</a></li>
-            <li><a href="vagas.jsp">Vagas</a></li>
+            <li><a href="areas.jsp">Áreas</a></li>
+            <li class="active"><a href="vagas.jsp">Vagas</a></li>
             <li><a href="usuarios.jsp">Usuarios</a></li>
           </ul>
         </div>

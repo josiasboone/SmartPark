@@ -2,6 +2,7 @@ package br.feevale.smartpark.sessao;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.feevale.smartpark.apresentacao.MntAreas;
 import br.feevale.smartpark.persistencia.dao.Localizador;
 import br.feevale.smartpark.persistencia.tabelas.Usuario;
 import br.feevale.smartpark.util.Md5;
@@ -37,6 +38,22 @@ public class GerenciadorDeSessao {
 		}
 		
 		return false;
+	}
+	
+	
+	public static MntAreas getMntAreas( HttpServletRequest request ){
+		
+		MntAreas mnt = (MntAreas) request.getSession().getAttribute( "MntArea" );
+		
+		if( mnt != null ){
+			return mnt;
+		}
+		
+		mnt = new MntAreas();
+		
+		request.getSession().setAttribute( "MntArea", mnt);
+		
+		return mnt;
 	}
 	
 }

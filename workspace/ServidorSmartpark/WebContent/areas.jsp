@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="br.feevale.smartpark.persistencia.tabelas.Area"%>
+<%@page import="java.util.List"%>
+<%@page import="br.feevale.smartpark.apresentacao.MntAreas"%>
 <%@page import="br.feevale.smartpark.sessao.GerenciadorDeSessao"%>
 <html lang="en">
   <head>
@@ -12,6 +15,7 @@
     <title>Smartpark</title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -20,8 +24,15 @@
 if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 	response.sendRedirect( "login.jsp" );
 }
-
-%>
+ MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
+ String msg = mnt.executaAcao(request);
+ 
+ if( msg != null ){
+	%>
+		<script>
+		alert('<%=msg%>');
+		</script>
+ <%}%>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -36,7 +47,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="areas.jsp">Áreas</a></li>
+            <li class="active"><a href="areas.jsp">Áreas</a></li>
             <li><a href="vagas.jsp">Vagas</a></li>
             <li><a href="usuarios.jsp">Usuarios</a></li>
           </ul>
@@ -47,6 +58,45 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
     <div class="container" id="areas">
 	
       <div class="starter-template">
+      
+      	<div id="DivCorpoWeb">
+       	<div id="Conteiner">
+            <table id="TbListaArea" border="1" cellspacing="0" cellpadding="0">
+           <tr>
+            	<td>
+                    <div class="SubTituloDescricao">Descrição</div>
+                </td>
+                <td colspan="2">
+                	<div class="SubTituloDescricao">&nbsp;</div>
+                </td>
+            </tr>
+           
+            
+         <%
+         	List<Area> lista = mnt.getLista();
+         	for( Area area : lista ){%>
+         	 <tr>	
+                <td>
+                    <div class="SubTituloArea"><%=area.getDsArea()%></div>
+                </td>
+                <td>
+                    <a href="#">Alterar</a>
+                </td>
+                <td>
+                    <a href="#">Excluir</a>
+                </td>
+            </tr>
+         <%}%>   
+            
+            
+           
+            
+            </table>
+            </div>
+    
+        <div id="areIncluir"><a href="areasIncluir.jsp">Incluir </a></div>
+    </div>
+      
       </div>
 
     </div>
