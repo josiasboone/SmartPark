@@ -25,7 +25,12 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 	response.sendRedirect( "login.jsp" );
 }
  MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
- String msg = mnt.executaAcao(request);
+ 
+ String msg = null;
+ if( mnt != null) {
+	 mnt.executaAcao(request);
+ 
+ }
  
  if( msg != null ){
 	%>
@@ -33,7 +38,16 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 		alert('<%=msg%>');
 		</script>
  <%}%>
-
+	<script>
+		function excluir( dsArea, idArea ){
+			if( confirm("Você gostaria de Excluir a Area " + dsArea )){
+				var frmEx = document.getElementById("excluir");
+				
+				frmEx.idArea.value = idArea;
+				frmEx.submit();
+			}
+		}
+	</script>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -73,6 +87,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
            
             
          <%
+         	if(mnt !=null){
          	List<Area> lista = mnt.getLista();
          	for( Area area : lista ){%>
          	 <tr>	
@@ -83,29 +98,31 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
                     <a href="#">Alterar</a>
                 </td>
                 <td>
-                    <a href="#">Excluir</a>
+                    <a href="javascript:excluir('<%=area.getDsArea()%>','<%=area.getIdArea()%>')">Excluir</a>
                 </td>
             </tr>
-         <%}%>   
-            
-            
-           
+         <%}
+         }%>   
             
             </table>
             </div>
-    
+    	
         <div id="areIncluir"><a href="areasIncluir.jsp">Incluir </a></div>
     </div>
       
       </div>
 
     </div>
-    
+	
+	<form name="excluir" id="excluir" method="GET" action="areas.jsp">
+		<input type="hidden" name="acao" value="excluir" />
+		<input type="hidden" name="idArea" value="0" />
+	</form>     
     
     
 
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -43,6 +43,10 @@ public class GerenciadorDeSessao {
 	
 	public static MntAreas getMntAreas( HttpServletRequest request ){
 		
+		if( !isSessaoValida(request)){
+			return null;
+		}
+		
 		MntAreas mnt = (MntAreas) request.getSession().getAttribute( "MntArea" );
 		
 		if( mnt != null ){

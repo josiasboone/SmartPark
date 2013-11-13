@@ -5,10 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import br.feevale.smartpark.persistencia.dao.Conexao;
+import br.feevale.smartpark.persistencia.dao.Localizador;
 import br.feevale.smartpark.persistencia.regras.AreaRegra;
 import br.feevale.smartpark.persistencia.tabelas.Area;
+import br.feevale.smartpark.persistencia.tabelas.Usuario;
 
 public class MntAreas {
+	
+	
 	
 	public List<Area> getLista(){
 		
@@ -28,23 +32,42 @@ public class MntAreas {
 	
 	
 	public String executaAcao( HttpServletRequest request ){
+		
 		String acao = request.getParameter( "acao" ); 
+		
+		System.out.println( acao );
 		if( acao != null ){
 		 	if( acao.equals( "incluir") ){
 		 		try{
 		 			gravaArea( request );
 		 		} catch( Exception e ){
 		 			e.printStackTrace();
-		 			
 		 			return "ERRO:" + e.getMessage();
 		 		}
 		 		
 		 		return  "Areas Gravada!";
+		 	} else if( acao.equals("excluir") ){
+		 		
+		 		excluirArea( request );
+		 		
 		 	}
 		}
 		
 		return null;
 	}
+
+	private void excluirArea(HttpServletRequest request) {
+		
+		String idArea = request.getParameter("idArea");
+		System.out.println( idArea );
+		Area a = (Area) Localizador.buscaTabela(Area.class, "idArea", Integer.parseInt(idArea) );
+		
+		if( a != null ){
+			AreaRegra ar = new AreaRegra(a);
+			ar.excluir();
+		}
+	}
+
 
 	private void gravaArea(HttpServletRequest request) {
 		
