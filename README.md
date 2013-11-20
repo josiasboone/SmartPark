@@ -18,10 +18,3 @@ Baixar o
 windows.github.com
 ou 
 mac.github.com
-
-=========
-Quando instalar o GitHub ira solicitar seu login e senha.
-
-Não é para copiar o projeto para o usuarios de vcs..... é só contribuir editando o arquivo email.
-=========
-
