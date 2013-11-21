@@ -15,5 +15,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/opt/apache-tomcat-7.0.39/lib/catalina.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

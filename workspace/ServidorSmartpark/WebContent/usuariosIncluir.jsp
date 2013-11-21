@@ -33,24 +33,36 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
       	<div id="DivCorpoWeb">
        	<div id="ConteinerEdit" style="width: 40%; text-align: left;">
        		<div class="col-sm-offset-2 col-sm-10">
-		    	<label >Incluindo Nova Áreas</label>
+		    	<label >Incluindo Novo Usuario</label>
              </div>
 			<form action="areas.jsp" method="get" name="area">
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
+				    <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="descricao" name="descricao" >
 				    </div>
 				  </div>
+
+					<div class="form-group">&nbsp;</div>
+					
 				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox" id="desativar" name="desativar">  Desativar Área
-				        </label>
-				      </div>
+				    <label for="inputEmail3" class="col-sm-2 control-label">Senha</label>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control" id="senha" name="senha" >
 				    </div>
 				  </div>
+				  
+				  <div>&nbsp;</div>
+				  
+				   <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">&nbsp;</label>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control" id="senha" name="senha" >
+				    </div>
+				  </div>
+				  
+				  <div>&nbsp;</div>
+				  
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
 				      <input type="submit" style="width:100px" value="Salvar" class="btn btn-default">

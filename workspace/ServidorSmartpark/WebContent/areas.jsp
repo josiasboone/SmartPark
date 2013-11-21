@@ -18,7 +18,7 @@
     <link href="css/estilo.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body style="padding-top: 5px;">
   
   <%
 if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
@@ -48,30 +48,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 			}
 		}
 	</script>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.jsp">SmartPark</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="areas.jsp">Áreas</a></li>
-            <li><a href="vagas.jsp">Vagas</a></li>
-            <li><a href="usuarios.jsp">Usuarios</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container" id="areas">
-	
-      <div class="starter-template">
+      <div >
       
       	<div id="DivCorpoWeb">
        	<div id="Conteiner">
@@ -112,17 +89,11 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
       
       </div>
 
-    </div>
-	
 	<form name="excluir" id="excluir" method="GET" action="areas.jsp">
 		<input type="hidden" name="acao" value="excluir" />
 		<input type="hidden" name="idArea" value="0" />
 	</form>     
     
-    
-
-
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
-</html>
