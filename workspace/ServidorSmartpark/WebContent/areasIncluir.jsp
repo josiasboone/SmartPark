@@ -21,9 +21,6 @@
    <body style="padding-top: 5px;">
   
   <%
-if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
-	response.sendRedirect( "login.jsp" );
-}
  MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
 
 %>
@@ -35,7 +32,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
        		<div class="col-sm-offset-2 col-sm-10">
 		    	<label >Incluindo Nova Áreas</label>
              </div>
-			<form action="areas.jsp" method="get" name="area">
+			<form action="areas.jsp" method="post" name="area">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
 				    <div class="col-sm-10">
@@ -67,7 +64,9 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
       
       </div>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/smartpark.js"></script>
   </body>
 </html>

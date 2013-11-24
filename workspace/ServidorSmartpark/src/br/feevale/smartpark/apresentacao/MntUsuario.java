@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import br.feevale.smartpark.persistencia.dao.Conexao;
 import br.feevale.smartpark.persistencia.dao.Localizador;
-import br.feevale.smartpark.persistencia.regras.AreaRegra;
 import br.feevale.smartpark.persistencia.regras.UsuarioRegra;
 import br.feevale.smartpark.persistencia.tabelas.Area;
 import br.feevale.smartpark.persistencia.tabelas.Usuario;
+import br.feevale.smartpark.util.Md5;
 
 public class MntUsuario {
 	
@@ -61,10 +61,10 @@ public class MntUsuario {
 		
 		String idUsuario = request.getParameter("idUsuario");
 		System.out.println( idUsuario );
-		Area a = (Area) Localizador.buscaTabela(Area.class, "idUsuario", Integer.parseInt(idUsuario) );
+		Usuario a = (Usuario) Localizador.buscaTabela(Usuario.class, "idUsuario", Integer.parseInt(idUsuario) );
 		
 		if( a != null ){
-			AreaRegra ar = new AreaRegra(a);
+			UsuarioRegra ar = new UsuarioRegra(a);
 			ar.excluir();
 		}
 	}
@@ -74,14 +74,13 @@ public class MntUsuario {
 		
 		Usuario usuario = new Usuario();
 		
-		String desativar = request.getParameter("desativar");
+		usuario.setDsUsuario(request.getParameter("dsUsuario"));
+		usuario.setDsSenha(Md5.converter(request.getParameter("dsSenha")));
 		
-		if( desativar == null ){
-			desativar = "";
+		if( Localizador.buscaTabela(Usuario.class, "dsUsuario", usuario.getDsUsuario() ) != null ) {
+			throw new RuntimeException( "Usuario (" + usuario.getDsUsuario() + ") já consta na base");
 		}
 		
-//		usuario.setDsArea( request.getParameter("descricao"));
-//		usuario.setSnDesativado(desativar.equals("on") ? "S": "N" );
 		
 		UsuarioRegra usuarioRegra = new UsuarioRegra(usuario);
 		usuarioRegra.inserir();

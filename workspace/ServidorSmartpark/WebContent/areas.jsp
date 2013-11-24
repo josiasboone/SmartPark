@@ -21,15 +21,12 @@
   <body style="padding-top: 5px;">
   
   <%
-if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
-	response.sendRedirect( "login.jsp" );
-}
- MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
+
+  MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
  
  String msg = null;
  if( mnt != null) {
-	 mnt.executaAcao(request);
- 
+	 msg = mnt.executaAcao(request);
  }
  
  if( msg != null ){
@@ -94,6 +91,9 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 		<input type="hidden" name="idArea" value="0" />
 	</form>     
     
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/smartpark.js"></script>
+
   </body>

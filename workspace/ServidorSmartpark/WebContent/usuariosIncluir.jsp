@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="br.feevale.smartpark.persistencia.tabelas.Area"%>
+<%@page import="br.feevale.smartpark.apresentacao.MntUsuario"%>
 <%@page import="java.util.List"%>
 <%@page import="br.feevale.smartpark.apresentacao.MntAreas"%>
 <%@page import="br.feevale.smartpark.sessao.GerenciadorDeSessao"%>
@@ -21,11 +21,8 @@
    <body style="padding-top: 5px;">
   
   <%
-if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
-	response.sendRedirect( "login.jsp" );
-}
- MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
-
+ MntUsuario mnt = GerenciadorDeSessao.getMntUsuario(request);
+	
 %>
 
       <div>
@@ -35,11 +32,11 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
        		<div class="col-sm-offset-2 col-sm-10">
 		    	<label >Incluindo Novo Usuario</label>
              </div>
-			<form action="areas.jsp" method="get" name="area">
+			<form action="usuarios.jsp" method="post" name="usuarios">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="descricao" name="descricao" >
+				      <input type="text" class="form-control" id="dsUsuario" name="dsUsuario" >
 				    </div>
 				  </div>
 
@@ -48,7 +45,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Senha</label>
 				    <div class="col-sm-10">
-				      <input type="password" class="form-control" id="senha" name="senha" >
+				      <input type="password" class="form-control" id="dsSenha" name="dsSenha" >
 				    </div>
 				  </div>
 				  
@@ -57,7 +54,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 				   <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">&nbsp;</label>
 				    <div class="col-sm-10">
-				      <input type="password" class="form-control" id="senha" name="senha" >
+				      <input type="password" class="form-control" id="dsSenhaConfirma" name="dsSenhaConfirma" >
 				    </div>
 				  </div>
 				  
@@ -79,7 +76,10 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
       
       </div>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/smartpark.js"></script>
+
   </body>
 </html>

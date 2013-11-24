@@ -7,11 +7,8 @@
 if( GerenciadorDeSessao.gravaUsuarioNaSessao(request) ) {
 	response.sendRedirect( "index.jsp" );
 } else {
-  response.sendRedirect( "login.jsp?erro='ERRO'" ); 
+  	response.sendRedirect( "index.jsp?erro='ERRO'" ); 
 }%>
-
-
-
 
 
 

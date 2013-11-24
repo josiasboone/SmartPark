@@ -1,3 +1,5 @@
+var localPrincipal;
+
 function getURLParameter(url,nome) {
 	return getURLParameters(url)[nome];
 }
@@ -20,7 +22,6 @@ function getURLParameters(url) {
 	}
 	return result;
 }
-
 
 
 

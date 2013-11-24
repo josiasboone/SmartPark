@@ -79,8 +79,15 @@ public class MntAreas {
 			desativar = "";
 		}
 		
+		
 		area.setDsArea( request.getParameter("descricao"));
 		area.setSnDesativado(desativar.equals("on") ? "S": "N" );
+		
+		if( Localizador.buscaTabela(Area.class, "dsArea", area.getDsArea() ) != null ) {
+			throw new RuntimeException( "Area (" + area.getDsArea() + ") já consta na base");
+		}
+		
+		
 		
 		AreaRegra areaRegra = new AreaRegra(area);
 		areaRegra.inserir();

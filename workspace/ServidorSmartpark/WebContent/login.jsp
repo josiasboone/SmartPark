@@ -8,20 +8,11 @@
     <title>SMART PARK Login</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/signin.css">
-    <script type="text/javascript" src="js/smartpark.js" ></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/smartpark.js"></script>
   </head>
   <body>
-  
-    
-  <%
-if( GerenciadorDeSessao.isSessaoValida( request ) ) {
-	response.sendRedirect( "index.jsp" );
-}
-
-%>
-  	<script src="https://code.jquery.com/jquery.js"></script>
-	
 	
     <div class="container">
       <form id="frmLogin" class="form-signin" method="post" action="efetuaLogin.jsp">
@@ -44,5 +35,11 @@ if( GerenciadorDeSessao.isSessaoValida( request ) ) {
 	  msgErro.setAttribute("class", "alert alert-warning fade in");
 	  msgErro.innerHTML = 'Usuario ou Senha Invalida!';
   }
+
+  if( top.location !=  location){
+	  top.location.href = 'index.jsp';  
+  }
+  
+  
   </script>
 </html>

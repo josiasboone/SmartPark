@@ -1,7 +1,7 @@
 <%@page import="br.feevale.smartpark.sessao.GerenciadorDeSessao"%>
 
-<html lang="en">
-  <head>
+<html lang="en" id="principal">
+  <head >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +14,12 @@
     <link href="css/starter-template.css" rel="stylesheet">
     <script type="text/javascript">
 	function abrirMenu( pagina ){
-
 		var iframePagina = document.getElementById("iframePagina");
 
 		iframePagina.src = pagina;
 		iframePagina.submit;
 		
 	} 
-	
-
 
     </script>
   </head>
@@ -37,7 +34,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 }
 %>
 	
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,7 +52,7 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
             <li><a href="javascript:abrirMenu('usuarios.jsp');">Usuarios</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-	       	<li><a href="sair.jsp">Sair</a></li>
+	       	<li><a id="sair" href="sair.jsp">Sair</a></li>
 	      </ul>
         </div>
         
@@ -65,7 +62,8 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
     </div>
 	
 	<div style="width: 100%;height:100%;">
-		<iframe src="branco.jsp" style="width: 100%;height:100%;" id="iframePagina">
+		<iframe src="branco.jsp" style="width: 100%;height:100%;" id="iframePagina" >
+			
 		</iframe>
 	</div>
     
@@ -73,7 +71,9 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
     
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/smartpark.js"></script>
   </body>
 </html>
+

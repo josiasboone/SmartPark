@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <%@page import="br.feevale.smartpark.persistencia.tabelas.Usuario"%>
 <%@page import="br.feevale.smartpark.apresentacao.MntUsuario"%>
-<%@page import="br.feevale.smartpark.persistencia.tabelas.Area"%>
 <%@page import="java.util.List"%>
 <%@page import="br.feevale.smartpark.sessao.GerenciadorDeSessao"%>
 <html lang="en">
@@ -17,20 +16,21 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
     <link href="css/estilo.css" rel="stylesheet" />
+    <script src="bootstrap/js/jquery-2.0.3.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- 	<script src="js/smartpark.js"></script> -->
+    
   </head>
 
   <body style="padding-top: 5px;">
   
   <%
-if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
-	response.sendRedirect( "login.jsp" );
-}
+
   MntUsuario mnt = GerenciadorDeSessao.getMntUsuario(request);
  
  String msg = null;
  if( mnt != null) {
-	 mnt.executaAcao(request);
- 
+	msg = mnt.executaAcao(request);
  }
  
  if( msg != null ){
@@ -40,11 +40,12 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
 		</script>
  <%}%>
 	<script>
-		function excluir( dsArea, idArea ){
-			if( confirm("Você gostaria de Excluir a Area " + dsArea )){
+	
+		function excluir( dsUsuario, idUsuario ){
+			if( confirm("Você gostaria de Excluir a Area " + dsUsuario )){
 				var frmEx = document.getElementById("excluir");
 				
-				frmEx.idArea.value = idArea;
+				frmEx.idUsuario.value = idUsuario;
 				frmEx.submit();
 			}
 		}
@@ -67,16 +68,16 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
          <%
          	if(mnt !=null){
          	List<Usuario> lista = mnt.getLista();
-         	for( Usuario area : lista ){%>
+         	for( Usuario usuario : lista ){%>
          	 <tr>	
                 <td>
-                    <div class="SubTituloArea"><%=area.getDsUsuario()%></div>
+                    <div class="SubTituloArea"><%=usuario.getDsUsuario()%></div>
                 </td>
                 <td>
                     <a href="#">Alterar</a>
                 </td>
                 <td>
-                    <a href="javascript:excluir('<%=area.getDsUsuario()%>','<%=area.getIdUsuario()%>')">Excluir</a>
+                    <a href="javascript:excluir('<%=usuario.getDsUsuario()%>','<%=usuario.getIdUsuario()%>')">Excluir</a>
                 </td>
             </tr>
          <%}
@@ -90,11 +91,10 @@ if( !GerenciadorDeSessao.isSessaoValida( request ) ) {
       
       </div>
 
-	<form name="excluir" id="excluir" method="GET" action="areas.jsp">
+	<form name="excluir" id="excluir" method="GET" action="usuarios.jsp">
 		<input type="hidden" name="acao" value="excluir" />
-		<input type="hidden" name="idArea" value="0" />
+		<input type="hidden" name="idUsuario" value="0" />
 	</form>     
     
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+   
   </body>
