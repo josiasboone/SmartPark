@@ -46,6 +46,18 @@ public class MntAreas {
 		 		}
 		 		
 		 		return  "Areas Gravada!";
+		 		
+		 	} else if( acao.equals("alterar") ){
+		 		
+		 		try{
+		 			alteraArea( request );
+		 		} catch( Exception e ){
+		 			e.printStackTrace();
+		 			return "ERRO:" + e.getMessage();
+		 		}
+		 		
+		 		return  "Areas Alterada!";
+		 		
 		 	} else if( acao.equals("excluir") ){
 		 		
 		 		excluirArea( request );
@@ -93,6 +105,50 @@ public class MntAreas {
 		areaRegra.inserir();
 		
 		
+	}
+	
+	private void alteraArea(HttpServletRequest request) {
+		
+		Area areaAltera = null;
+		
+		String desativar = request.getParameter("desativar");
+		String descricao = request.getParameter("descricao");
+		String idArea = request.getParameter("id");
+		
+		if( desativar == null ){
+			desativar = "";
+		}
+		
+		if( descricao == null ){
+			descricao = "";
+		}
+		
+		
+		areaAltera = (Area) Localizador.buscaTabela(Area.class, "idArea", Integer.parseInt( idArea));
+		
+		if( areaAltera == null ){
+			throw new RuntimeException( "Area nõo consta na base");
+		}
+		
+		if( !descricao.equals(areaAltera.getDsArea())){
+			if( Localizador.buscaTabela(Area.class, "dsArea", descricao ) != null ) {
+				throw new RuntimeException( "Area (" + descricao + ") já consta na base");
+			}
+		}
+		
+		areaAltera.setDsArea( request.getParameter("descricao"));
+		areaAltera.setSnDesativado(desativar.equals("on") ? "S": "N" );
+		
+		AreaRegra areaRegra = new AreaRegra(areaAltera);
+		areaRegra.alterar();
+		
+	}
+	
+	public Area solicitaAlteracao( String idArea ){
+		
+		Area area = (Area) Localizador.buscaTabela(Area.class, "idArea", Integer.parseInt( idArea ));
+		System.out.println( area.getSnDesativado() );
+		return area;
 	}
 	
 }

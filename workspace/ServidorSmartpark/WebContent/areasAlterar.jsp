@@ -19,32 +19,44 @@
   </head>
 
    <body style="padding-top: 5px;">
-  
+ <script>
   <%
- MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
-
-%>
+	MntAreas mnt = GerenciadorDeSessao.getMntAreas(request);
+  	
+  	Area area = mnt.solicitaAlteracao( request.getParameter("idArea"));
+  
+  	if( area == null ){ %>
+  		alert("Area não encontrado!");
+  		location.href = "areas.jsp";
+  	<%}
+  	
+  	System.out.print( area.getSnDesativado());
+  	
+ %>
+ </script> 
 
       <div>
       
       	<div id="DivCorpoWeb">
        	<div id="ConteinerEdit" style="width: 40%; text-align: left;">
        		<div class="col-sm-offset-2 col-sm-10">
-		    	<label >Incluindo Nova Áreas</label>
+		    	<label>Alterando Áreas - <%=area.getDsArea()%></label>
              </div>
 			<form action="areas.jsp" method="post" name="area">
 				  <div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="descricao" name="descricao" >
+				      <input type="text" class="form-control" id="descricao" name="descricao" value="<%=area.getDsArea()%>" >
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
 				      <div class="checkbox">
 				        <label>
-				          <input type="checkbox" id="desativar" name="desativar" >  Desativar Área
-				        </label>
+				          <input type="checkbox" id="desativar" name="desativar" 
+				          <%if( area.getSnDesativado().equals("S") ) { %>
+				             checked
+				          <%}%>>Desativar Área</label>
 				      </div>
 				    </div>
 				  </div>
@@ -55,7 +67,8 @@
 				    </div>
 				  </div>
 				  
-				  <input type="hidden" name="acao" value="incluir" />
+				  <input type="hidden" name="acao" value="alterar" />
+				  <input type="hidden" name="id" value="<%=area.getIdArea()%>" />
 	            
             </form>            
         </div>

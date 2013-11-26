@@ -69,7 +69,7 @@
                     <div class="SubTituloArea"><%=area.getDsArea()%></div>
                 </td>
                 <td>
-                    <a href="#">Alterar</a>
+                    <a href="areasAlterar.jsp?idArea=<%=area.getIdArea()%>">Alterar</a>
                 </td>
                 <td>
                     <a href="javascript:excluir('<%=area.getDsArea()%>','<%=area.getIdArea()%>')">Excluir</a>
