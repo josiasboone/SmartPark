@@ -9,7 +9,9 @@ function getURLParameters() {
 }
 
 function getURLParameters(url) {
-
+	
+	debugger;
+	
 	var result = {};
 	var searchIndex = url.indexOf("?");
 	if (searchIndex == -1)
