@@ -18,6 +18,7 @@
     <link href="css/estilo.css" rel="stylesheet" />
     <script src="bootstrap/js/jquery-2.0.3.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/signin.css">
 <!-- 	<script src="js/smartpark.js"></script> -->
     
   </head>

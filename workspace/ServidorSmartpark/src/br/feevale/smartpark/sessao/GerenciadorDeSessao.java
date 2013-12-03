@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import br.feevale.smartpark.apresentacao.MntAreas;
 import br.feevale.smartpark.apresentacao.MntUsuario;
+import br.feevale.smartpark.apresentacao.MntVagas;
 import br.feevale.smartpark.persistencia.dao.Localizador;
 import br.feevale.smartpark.persistencia.tabelas.Usuario;
 import br.feevale.smartpark.util.Md5;
@@ -80,5 +81,24 @@ public class GerenciadorDeSessao {
 		return mnt;
 	}
 	
+	
+	public static MntVagas getMntVagas( HttpServletRequest request ){
+		
+		if( !isSessaoValida(request)){
+			return null;
+		}
+		
+		MntVagas mnt = (MntVagas) request.getSession().getAttribute( "MntVaga" );
+		
+		if( mnt != null ){
+			return mnt;
+		}
+		
+		mnt = new MntVagas();
+		
+		request.getSession().setAttribute( "MntVaga", mnt);
+		
+		return mnt;
+	}
 	
 }
