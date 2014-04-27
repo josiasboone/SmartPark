@@ -9,6 +9,10 @@ public class Conexao {
 	private SessionFactory sessionFactory;
 	private Session session;
 	
+	private Conexao(){
+		
+	}
+	
 	public static Conexao getConexao( Class classes ){
 		Conexao cnx = new Conexao();
 		cnx.estabeleceConexao(classes);

@@ -18,6 +18,3 @@ Baixar o
 windows.github.com
 ou 
 mac.github.com
-
-=========
-Quando instalar o GitHub ira solicitar seu login e senha.

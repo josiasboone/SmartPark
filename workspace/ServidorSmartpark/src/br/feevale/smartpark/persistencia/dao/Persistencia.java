@@ -3,7 +3,7 @@ package br.feevale.smartpark.persistencia.dao;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
-import br.feevale.smartpark.persistencia.Tabela;
+import br.feevale.smartpark.persistencia.tabelas.Tabela;
 
 public class Persistencia {
 	
@@ -26,7 +26,7 @@ public class Persistencia {
 		Session session = cnx.getSession();
 		Transaction tx = session.beginTransaction(); 
 		session.delete( tabela );
-        	tx.commit();
+        tx.commit();
 	}
 	
 	public void alterar( Conexao cnx ) {
