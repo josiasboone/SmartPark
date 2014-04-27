@@ -5,12 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import br.feevale.smartpark.persistencia.dao.Conexao;
 import br.feevale.smartpark.persistencia.dao.Localizador;
-import br.feevale.smartpark.persistencia.regras.AreaRegra;
 import br.feevale.smartpark.persistencia.regras.VagaRegra;
 import br.feevale.smartpark.persistencia.tabelas.Area;
 import br.feevale.smartpark.persistencia.tabelas.Vaga;
@@ -23,13 +21,12 @@ public class MntVagas {
 		
 		int idArea = 0;
 		
-		try{
-			idArea = Integer.parseInt( request.getParameter("area") );
-			
-		} catch(Exception e ){
+		try {
+			idArea = Integer.parseInt(request.getParameter("area"));
+
+		} catch (Exception e) {
 			idArea = 0;
 		}
-		
 		
 		if( idArea != 0 ){
 			Conexao cnx = Conexao.getConexao( Vaga.class );
